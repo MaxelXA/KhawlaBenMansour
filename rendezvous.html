@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire un rendez-vous</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="rendezvous.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Faire un rendez-vous</h1>
+            <p>Votre vision, notre priorité.</p>
+        </div>
+        <div class="header-right">
+            <img src="logo.png" alt="Logo" id="logo">
+        </div>
+    </header>
+
+    <nav>
+        <a href="Home.html">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#about">à propos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section class="appointment-form">
+            <h2>Prendre un rendez-vous</h2>
+            <form id="appointment-form">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Numéro de téléphone</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="date">Date du rendez-vous</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Heure du rendez-vous</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dr. Khawla Ben Mansour. All rights reserved.</p>
+    </footer>
+
+    <script src="rendezvous.js"></script>
+</body>
+</html>
