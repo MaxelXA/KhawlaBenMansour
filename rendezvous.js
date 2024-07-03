@@ -10,9 +10,7 @@ document.getElementById('appointment-form').addEventListener('submit', function(
         message: document.getElementById('message').value
     };
 
-    console.log('Appointment Data:', formData);
-
-    fetch('http://localhost:3000/api/appointments', {
+    fetch('https://khawlabenmansour.netlify.app/.netlify/functions/appointment-handler', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,4 +26,3 @@ document.getElementById('appointment-form').addEventListener('submit', function(
         console.error('Error:', error);
     });
 });
-
