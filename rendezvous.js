@@ -26,6 +26,6 @@ document.getElementById('appointment-form').addEventListener('submit', function(
     })
     .catch(error => {
         console.error('Error:', error);
+        alert('There was an error sending your appointment request. Please try again.');
     });
 });
-
