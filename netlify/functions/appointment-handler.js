@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
+    console.log('Received event:', event); // Log the incoming event
+
     try {
         if (!event.body) {
             throw new Error('Missing request body');
