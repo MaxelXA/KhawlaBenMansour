@@ -10,7 +10,7 @@ document.getElementById('appointment-form').addEventListener('submit', function(
         message: document.getElementById('message').value
     };
 
-    fetch('https://khawlabenmansour.netlify.app/.netlify/functions/appointment-handler', {
+    fetch('/.netlify/functions/appointment-handler', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
