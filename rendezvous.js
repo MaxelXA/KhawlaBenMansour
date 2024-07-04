@@ -10,6 +10,8 @@ document.getElementById('appointment-form').addEventListener('submit', function(
         message: document.getElementById('message').value
     };
 
+    console.log('Sending form data:', formData); // Log the form data
+
     fetch('/.netlify/functions/appointment-handler', {
         method: 'POST',
         headers: {
@@ -26,3 +28,4 @@ document.getElementById('appointment-form').addEventListener('submit', function(
         console.error('Error:', error);
     });
 });
+
