@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
             service: 'gmail',
             auth: {
                 user: 'cabinetdrbenmansourkhawla@gmail.com', // your email
-                pass: 'benmansour24061990'   // your email password
+                pass: 'pqzj nfdt pcdo lsjd'   // your email password
             }
         });
 
