@@ -114,3 +114,14 @@ footer {
     width: 100%;
     margin-top: auto;
 }
+
+.image-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.image-responsive {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
