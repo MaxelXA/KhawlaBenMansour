@@ -8,15 +8,41 @@
     <link rel="stylesheet" href="homepage.css">
 </head>
     <style>
-        .fade-in {
+        .flex-container {
+            display: flex;
+            align-items: flex-start; /* Align items to the top */
+            margin-bottom: 40px;
+        }
+
+        .flex-container img {
+            flex: 1;
+            max-width: 300px; /* Set a max width for the images */
+            margin-right: 20px; /* Space between image and text */
             opacity: 0;
             transform: translateY(20px); /* Optional: slide up effect */
             transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
+        .flex-container .text {
+            flex: 2;
+        }
+
         .fade-in.show {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Ensure the images are responsive for smaller screens */
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .flex-container img {
+                margin-right: 0;
+                margin-bottom: 20px;
+                max-width: 100%;
+            }
         }
     </style>
 <body>
@@ -90,7 +116,7 @@
     <footer>
         <p>&copy; 2024 Dr. Khawla Ben Mansour. All rights reserved.</p>
     </footer>
-        <script>
+    <script>
         // Function to check if an element is in the viewport
         function isInViewport(element) {
             const rect = element.getBoundingClientRect();
