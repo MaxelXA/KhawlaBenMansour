@@ -6,56 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conseils - Dr. Khawla Ben Mansour</title>
     <link rel="stylesheet" href="homepage.css">
-</head>
     <style>
+        /* Flex container for the titles and images */
         .flex-container {
             display: flex;
-            align-items: flex-start; /* Align items to the top */
+            flex-wrap: wrap;
             margin-bottom: 40px;
+            align-items: flex-start;
         }
 
-        .flex-container img {
-            flex: 1;
-            max-width: 300px; /* Set a max width for the images */
-            margin-right: 20px; /* Space between image and text */
-            opacity: 0;
-            transform: translateY(20px); /* Optional: slide up effect */
-            transition: opacity 1s ease-out, transform 1s ease-out;
+        .flex-container a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        .flex-container .text {
-            flex: 2;
+        .flex-item {
+            flex: 1 1 calc(33% - 40px); /* Makes 3 items per row with spacing */
+            margin: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
+        .flex-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Ensure the images are responsive for smaller screens */
+        .flex-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .flex-item .title {
+            padding: 15px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .flex-container {
-                flex-direction: column;
+            .flex-item {
+                flex: 1 1 100%; /* Full width for smaller screens */
             }
+        }
 
-            .flex-container img {
-                margin-right: 0;
-                margin-bottom: 20px;
-                max-width: 100%;
-            }
-            .flex-container {
-                display: flex;
-                align-items: flex-start;
-                margin-bottom: 40px;
-                 /* Make sure the container can grow with content */
-                flex-wrap: wrap; /* Allows flex items to wrap to the next line if necessary */
-              }
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-           .container {
-                  overflow: visible; /* Ensure the container doesn't hide any overflowing content */
-                   }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
         }
     </style>
+</head>
+
 <body>
     <header>
         <div class="header-left">
@@ -72,114 +95,46 @@
     </nav>
 
     <div class="container">
-        <section id="vision-sante">
-            <h2>Causes et Maladies Possibles de l'oeil rouge</h2>
-            <p>Toutes ces conditions peuvent entraîner une cécité irréversible. Un diagnostic précoce est impératif.</p>
+        <!-- Flex container for the titles with images -->
+        <div class="flex-container">
+            <!-- First item -->
+            <div class="flex-item">
+                <a href="conjonctivite.html">
+                    <img src="conjonctivite.jpg" alt="Conjonctivite Image">
+                    <div class="title">
+                        <h3>Conjonctivite</h3>
+                    </div>
+                </a>
+            </div>
 
-            <h3>1. Conjonctivite</h3>
-            <p><strong>Symptômes :</strong> rougeur, écoulement, démangeaisons, et parfois une légère sensation de douleur.</p>
-            <p><strong>Cause :</strong> infection virale ou bactérienne, allergie, irritation.</p>
-            <p><strong>Traitement :</strong> antibiotiques ou antiviraux pour les infections, antihistaminiques pour les allergies, hygiène oculaire.</p>
+            <!-- Second item -->
+            <div class="flex-item">
+                <a href="glaucome.html">
+                    <img src="glaucome.jpg" alt="Glaucome Image">
+                    <div class="title">
+                        <h3>Glaucome aigu à angle fermé</h3>
+                    </div>
+                </a>
+            </div>
 
-            <h3>2. Glaucome aigu à angle fermé</h3>
-            <p><strong>Symptômes :</strong> douleur intense, rougeur, vision floue, halos autour des lumières, nausées, et vomissements.</p>
-            <p><strong>Cause :</strong> blocus rapide du drainage de l’humeur aqueuse, provoquant une pression intraoculaire accrue.</p>
-            <p><strong>Traitement :</strong> intervention immédiate requise : médicaments pour diminuer la pression intraoculaire, chirurgie.</p>
+            <!-- Third item -->
+            <div class="flex-item">
+                <a href="keratite.html">
+                    <img src="keratite.jpg" alt="Keratite Image">
+                    <div class="title">
+                        <h3>Kératite</h3>
+                    </div>
+                </a>
+            </div>
 
-            <h3>3. Kératite</h3>
-            <p><strong>Symptômes :</strong> rougeur, douleur, photophobie, vision floue.</p>
-            <p><strong>Cause :</strong> infection bactérienne, virale ou fongique, traumatisme, port prolongé de lentilles de contact.</p>
-            <p><strong>Traitement :</strong> antibiotiques ou antifongiques, médicaments antiviraux systémiques (herpès), traitement d’amibes (Acanthamoeba), soin urgent en cas d’infection fulminante pour éviter les cicatrices cornéennes.</p>
-
-            <h3>4. Uvéite</h3>
-            <p><strong>Symptômes :</strong> rougeur, douleur, vision floue, photophobie, mouches volantes.</p>
-            <p><strong>Cause :</strong> infection, autoimmune, spondylarthrite ankylosante.</p>
-            <p><strong>Traitement :</strong> anti-inflammatoires, corticostéroïdes, traitement maladie de base.</p>
-
-            <h3>5. Endophtalmie</h3>
-            <p><strong>Symptômes :</strong> rougeur, odeur, douleur intense, baisse rapide de vision.</p>
-            <p><strong>Cause :</strong> infection intraoculaire après chirurgie ou traumatisme.</p>
-            <p><strong>Traitement :</strong> antibiotiques, chirurgie.</p>
-
-            <p><em>Toutes ces conditions peuvent entraîner une cécité irréversible. Un diagnostic précoce est impératif.</em></p>
-
-            <h3>Que faire si ces symptômes apparaissent ?</h3>
-            <p><strong>Urgence consultation :</strong> Certains de ces symptômes dénotent des affections graves de l’œil telles que le glaucome aigu ou la kératite, qui doivent être traitées de toute urgence pour éviter des lésions permanentes.</p>
-            <p><strong>Éviter les lentilles de contact :</strong> Dans le cas où vous portez des lentilles de contact, enlevez-les immédiatement jusqu’à une visite chez le médecin.</p>
-            <p><strong>Évitez les gouttes oculaires en vente libre :</strong> Certaines gouttes peuvent empirer l’état, en particulier si la cause est le glaucome ou la kératite infectieuse.</p>
-            <p>En attendant, maintenez l’œil propre, évitez de vous démanger et protégez-vous d’une lumière vive si la lumière est responsable de l’exacerbation de la douleur.</p>
-            <p>Il est également important de se rappeler qu’un diagnostic précoce peut éviter des lésions définitives à l’œil.</p>
-
-        </section>
-
-        <!-- White Eye Section -->
-        <section id="vision-sante-blanche">
-            <h2>Causes et Maladies Potentielles de l'oeil blanche</h2>
-
-            <!-- Second Image: White Eye -->
-    <div class="container">
-        <section id="vision-sante">
-            <h2>Causes et Maladies Potentielles de l'oeil blanche</h2>
-
-            <h3>1. Névrite Optique</h3>
-            <p><strong>Symptômes :</strong> douleur derrière l’œil, en particulier lors de ses mouvements, perte rapide de la vision, souvent unilatérale, diminution de la perception des couleurs.</p>
-            <p><strong>Cause :</strong> inflammation du nerf optique, généralement en relation avec des maladies auto-immunes comme la sclérose en plaques ou des infections virales.</p>
-            <p><strong>Traitement :</strong> corticostéroïdes pour réduire l’inflammation, maîtrise de la maladie sous-jacente.</p>
-
-            <h3>2. Cataracte</h3>
-            <p><strong>Symptômes :</strong> vision floue, vision nocturne déficiente, halos autour des lumières, généralement sans douleur.</p>
-            <p><strong>Cause :</strong> opacification du cristallin par l’âge, les traumatismes ou certaines maladies.</p>
-            <p><strong>Traitement :</strong> chirurgie pour remplacer le cristallin opacifié par une lentille artificielle.</p>
-
-            <h3>3. Décollement de la Rétine</h3>
-            <p><strong>Symptôme :</strong> nouvelles mouches volantes, éclairs de lumière, store dans le champ de vision, vision progressivement perdue, indolore.</p>
-            <p><strong>Cause :</strong> la rétine se détache de son support, souvent à la suite d’un traumatisme, d’une forte myopie ou de chirurgies oculaires antérieures.</p>
-            <p><strong>Traitement :</strong> chirurgie urgente pour rétablir l’adhérence de la rétine.</p>
-
-            <h3>4. Maculopathie</h3>
-            <p><strong>Symptômes :</strong> perte de la vision centrale, lignes droites distordues, le plus souvent sans douleur.</p>
-            <p><strong>Cause :</strong> détérioration de la macula, la zone centrale de la rétine.</p>
-            <p><strong>Traitement :</strong> selon la forme de l’état (sèche ou humide) : injection intraoculaire, supplémentation nutritionnelle ou traitement laser.</p>
-
-            <h3>5. Neuropathie Ischémique Optique Antérieure</h3>
-            <p><strong>Symptôme :</strong> perte soudaine et indolore de la vision monoculaire, souvent au réveil. La vision affectée est floue ou vide.</p>
-            <p><strong>Cause :</strong> réduction du flux de sang au nerf optique, souvent chez des patients souffrant d’hypertension artérielle, de diabète, ou d’autres maladies vasculaires.</p>
-            <p><strong>Traitement :</strong> traitement de la pathologie sous-jacente, prise en charge de l’hypertension et des autres facteurs de risque vasculaire.</p>
-
-            <h3>Que faire ?</h3>
-            <p>Un bon ophtalmologiste consulté de toute urgence est nécessaire, et si une perte soudaine de vision survient, même si l’œil semble blanc. En outre, des examens supplémentaires tels qu’une IRM, une échographie de l’œil, un examen du fond de l’œil, etc., sont nécessaires pour identifier la cause.</p>
-            <p>Le traitement doit être démarré le plus tôt possible, car le traitement lui-même dépend en grande partie de la cause de la perte de vision. Par conséquent, le traitement comprend un médicament anti-inflammatoire, une chirurgie et un traitement systémique.</p>
-        </section>
+            <!-- Add more items similarly -->
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Dr. Khawla Ben Mansour. All rights reserved.</p>
     </footer>
-    <script>
-        // Function to check if an element is in the viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
 
-        // Check and add the "show" class when the image is in the viewport
-        function onScroll() {
-            const fadeInElements = document.querySelectorAll('.fade-in');
-            fadeInElements.forEach((el) => {
-                if (isInViewport(el)) {
-                    el.classList.add('show');
-                }
-            });
-        }
-
-        // Add event listener for scroll
-        window.addEventListener('scroll', onScroll);
-    </script>
 </body>
 
 </html>
