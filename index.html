@@ -31,6 +31,32 @@
             height: 400px;  /* Adjust the height as needed */
             width: 100%;
         }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel-button.prev {
+            left: 10px;
+        }
+        .carousel-button.next {
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -40,9 +66,7 @@
             <p>Votre vision, notre priorité.</p>
         </div>
         <div class="header-right">
-                    <div class="header-right">
             <img src="logo.png" alt="Logo" id="logo">
-        </div>
         </div>
     </header>
 
@@ -59,31 +83,38 @@
         <div class="horizontal-sections">
             <section id="services" class="services">
                 <h2>Nos Services</h2>
+                <div class="carousel">
+                    <img src="service1.jpg" alt="Service 1">
+                    <img src="service2.jpg" alt="Service 2">
+                    <img src="service3.jpg" alt="Service 3">
+                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+                </div>
                 <ul>
-                   <li>Examens complets de la vue</li>
-                   <li>Adaptation de lentilles de contact</li>
-                   <li>Dépistage du glaucome</li>
-                   <li>Chirurgie de la cataracte</li>
-                   <li>Consultations pour LASIK</li>
+                    <li>Examens complets de la vue</li>
+                    <li>Adaptation de lentilles de contact</li>
+                    <li>Dépistage du glaucome</li>
+                    <li>Chirurgie de la cataracte</li>
+                    <li>Consultations pour LASIK</li>
                 </ul>
             </section>
 
             <section id="localization" class="localization">
                 <h2>Localization</h2>
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12812.223633999694!2d10.4973172!3d36.6009625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd5f0068df773f%3A0x39c45ed69ccdbc45!2sCabinet%20Dr%20Ben%20Mansour%20Khawla!5e0!3m2!1sfr!2stn!4v1727887459102!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12812.223633999694!2d10.4973172!3d36.6009625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd5f0068df773f%3A0x39c45ed69ccdbc45!2sCabinet%20Dr%20Ben%20Mansour%20Khawla!5e0!3m2!1sfr!2stn!4v1727887459102!5m2!1sfr!2stn" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </section>
         </div>
 
-       <section id="about" class="about">
-       <div style="display: flex; align-items: center;">
-        <img src="picture.jpg" alt="Dr. X" style="width: 150px; height: 150px; margin-right: 20px; border-radius: 50%;">
-        <div>
-            <h2>à propos de Dr.Khawla Ben Mansour</h2>
-            <p>Spécialiste en Ophtalmologie et Traitement au Laser</p>
+        <section id="about" class="about">
+            <div style="display: flex; align-items: center;">
+                <img src="picture.jpg" alt="Dr. X" style="width: 150px; height: 150px; margin-right: 20px; border-radius: 50%;">
+                <div>
+                    <h2>à propos de Dr.Khawla Ben Mansour</h2>
+                    <p>Spécialiste en Ophtalmologie et Traitement au Laser</p>
                 </div>
-           </div>
+            </div>
         </section>
 
         <section id="contact" class="contact">
@@ -105,6 +136,27 @@
         document.getElementById('appointment-btn').addEventListener('click', function() {
             window.location.href = 'rendezvous.html';
         });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
     </script>
 </body>
 </html>
