@@ -30,12 +30,19 @@
         #map {
             height: 400px;  /* Adjust the height as needed */
             width: 100%;
+            overflow: hidden; /* Prevent overflow */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         .carousel {
             display: flex;
             overflow: hidden;
             width: 100%;
             position: relative;
+            margin-top: 20px; /* Add space between text and carousel */
         }
         .carousel img {
             width: 100%;
@@ -83,13 +90,6 @@
         <div class="horizontal-sections">
             <section id="services" class="services">
                 <h2>Nos Services</h2>
-                <div class="carousel">
-                    <img src="service1.jpg" alt="Service 1">
-                    <img src="service2.jpg" alt="Service 2">
-                    <img src="service3.jpg" alt="Service 3">
-                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
-                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
-                </div>
                 <ul>
                     <li>Examens complets de la vue</li>
                     <li>Adaptation de lentilles de contact</li>
@@ -97,12 +97,20 @@
                     <li>Chirurgie de la cataracte</li>
                     <li>Consultations pour LASIK</li>
                 </ul>
+                <!-- Carousel below the text -->
+                <div class="carousel">
+                    <img src="service1.jpg" alt="Service 1">
+                    <img src="service2.jpg" alt="Service 2">
+                    <img src="service3.jpg" alt="Service 3">
+                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+                </div>
             </section>
 
             <section id="localization" class="localization">
                 <h2>Localization</h2>
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12812.223633999694!2d10.4973172!3d36.6009625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd5f0068df773f%3A0x39c45ed69ccdbc45!2sCabinet%20Dr%20Ben%20Mansour%20Khawla!5e0!3m2!1sfr!2stn!4v1727887459102!5m2!1sfr!2stn" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12812.223633999694!2d10.4973172!3d36.6009625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd5f0068df773f%3A0x39c45ed69ccdbc45!2sCabinet%20Dr%20Ben%20Mansour%20Khawla!5e0!3m2!1sfr!2stn!4v1727887459102!5m2!1sfr!2stn" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </section>
         </div>
