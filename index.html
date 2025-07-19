@@ -37,36 +37,46 @@
             height: 100%;
             border: 0;
         }
-        .carousel {
-            display: flex;
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-            margin-top: 20px; /* Add space between text and carousel */
-        }
-        .carousel img {
-          max-width: 100%;
-          max-height: 400px; /* adjust to your design */
-          height: auto;
-          display: block;
-          object-fit: contain; /* or 'cover' depending on your preference */
-          }
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .carousel-button.prev {
-            left: 10px;
-        }
-        .carousel-button.next {
-            right: 10px;
-        }
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-track img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
         
     </style>
 </head>
@@ -102,13 +112,15 @@
                     <li>Consultations pour LASIK</li>
                 </ul>
                 <!-- Carousel below the text -->
-                <div class="carousel">
+                  <div class="carousel">
+                  <div class="carousel-track">
                     <img src="service1.jpg" alt="Service 1">
                     <img src="service2.jpg" alt="Service 2">
                     <img src="service3.jpg" alt="Service 3">
-                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
-                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
-                </div>
+                     </div>
+             <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+             <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+             </div>
             </section>
 
             <section id="localization" class="localization">
@@ -149,26 +161,29 @@
             window.location.href = 'rendezvous.html';
         });
 
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel img');
+       <script>
+    let currentIndex = 0;
+    const track = document.querySelector('.carousel-track');
+    const images = document.querySelectorAll('.carousel-track img');
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.transform = `translateX(${100 * (i - index)}%)`;
-            });
-        }
+    function updateSlide() {
+        const width = images[0].clientWidth;
+        track.style.transform = `translateX(-${currentIndex * width}px)`;
+    }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlide();
+    }
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlide();
+    }
 
-        showSlide(currentSlide);
+    window.addEventListener('resize', updateSlide); // maintain proper size on resize
+    window.addEventListener('load', updateSlide);   // set initial position
+</script>
     </script>
 </body>
 </html>
