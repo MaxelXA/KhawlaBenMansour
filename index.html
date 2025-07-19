@@ -37,48 +37,51 @@
             height: 100%;
             border: 0;
         }
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-}
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-}
+    .carousel {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-.carousel-track img {
-    width: 100%;
-    flex-shrink: 0;
-    object-fit: cover;
-}
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
 
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 2;
-}
+    .carousel-track img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
 
-.carousel-button.prev {
-    left: 10px;
-}
+    .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 2;
+        font-size: 18px;
+    }
 
-.carousel-button.next {
-    right: 10px;
-}
+    .carousel-button.prev {
+        left: 10px;
+    }
 
-        
+    .carousel-button.next {
+        right: 10px;
+    }
     </style>
+    
 </head>
 <body>
     <header>
@@ -156,34 +159,37 @@
     <button id="facebook-btn" class="social-btn" onclick="window.location.href='https://www.facebook.com'">f</button>
     <button id="linkedin-btn" class="social-btn" onclick="window.location.href='https://www.linkedin.com'">in</button>
 
-    <script>
-        document.getElementById('appointment-btn').addEventListener('click', function() {
-            window.location.href = 'rendezvous.html';
-        });
+<script>
+    document.getElementById('appointment-btn').addEventListener('click', function() {
+        window.location.href = 'rendezvous.html';
+    });
 
-       <script>
     let currentIndex = 0;
-    const track = document.querySelector('.carousel-track');
-    const images = document.querySelectorAll('.carousel-track img');
 
-    function updateSlide() {
-        const width = images[0].clientWidth;
-        track.style.transform = `translateX(-${currentIndex * width}px)`;
-    }
+    window.addEventListener('load', () => {
+        const track = document.querySelector('.carousel-track');
+        const images = document.querySelectorAll('.carousel-track img');
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        function updateSlide() {
+            const width = images[0].clientWidth;
+            track.style.transform = `translateX(-${currentIndex * width}px)`;
+        }
+
+        window.updateSlide = updateSlide;
+        window.prevSlide = function () {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateSlide();
+        };
+
+        window.nextSlide = function () {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateSlide();
+        };
+
+        window.addEventListener('resize', updateSlide);
         updateSlide();
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateSlide();
-    }
-
-    window.addEventListener('resize', updateSlide); // maintain proper size on resize
-    window.addEventListener('load', updateSlide);   // set initial position
+    });
 </script>
-    </script>
+
 </body>
 </html>
