@@ -45,9 +45,11 @@
             margin-top: 20px; /* Add space between text and carousel */
         }
         .carousel img {
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
+          max-width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain; /* or 'cover' depending on your preference */
+          }
         .carousel-button {
             position: absolute;
             top: 50%;
@@ -64,6 +66,7 @@
         .carousel-button.next {
             right: 10px;
         }
+        
     </style>
 </head>
 <body>
